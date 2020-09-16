@@ -61,9 +61,16 @@ Person.prototype.toString = function() {
 	return `${this.name}, ${this.age}`;
 }
 
-const personOne = new Person();
-const personTwo = new Person();
-const personThree = new Person();
+const personOne = new Person('Danny', 18);
+const personTwo = new Person('Jenny', 50);
+const personThree = new Person('Anthony', 22);
+
+console.log(personOne.toString())
+personOne.eat('wings');
+personOne.eat('pizza');
+console.log(personOne.stomach);
+personOne.poop();
+console.log(personOne.stomach);
 
 /*
   TASK 2
@@ -96,12 +103,20 @@ Car.prototype.fill = function(gallons)
 Car.prototype.drive = function(distance) 
 {
     this.odometer += distance;
-    this.tank -= (distance/milesPerGallon);
+    this.tank -= (distance/this.milesPerGallon);
     if(this.tank <= 0)
     {
     return `I ran out of fuel at ${this.odometer} miles!`;
     }
 }
+
+const volkswagen = new Car('Tiguan SE', 20);
+console.log(volkswagen.model);
+console.log(volkswagen.milesPerGallon+" mpg");
+volkswagen.fill(5);
+volkswagen.drive(60);
+console.log(volkswagen.odometer+ " miles");
+console.log(volkswagen.drive(40));
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -109,9 +124,23 @@ Car.prototype.drive = function(distance)
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
 
+function Baby(name, age, favoriteToy) 
+{
+  Person.call(this,name,age);
+  this.favoriteToy = favoriteToy;
 }
+
+Baby.prototype = Object.create(Person.prototype)
+
+Baby.prototype.play = function() {
+  return `Playing with ${this.favoriteToy}`;
+}
+
+const babyOne = new Baby('Frankie', 1, 'LEGO');
+console.log(babyOne.name);
+console.log(babyOne.age);
+console.log(babyOne.play());
 
 /* 
   TASK 4
