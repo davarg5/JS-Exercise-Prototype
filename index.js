@@ -117,6 +117,7 @@ volkswagen.fill(5);
 volkswagen.drive(60);
 console.log(volkswagen.odometer+ " miles");
 console.log(volkswagen.drive(40));
+
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -144,12 +145,11 @@ console.log(babyOne.play());
 
 /* 
   TASK 4
-
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Window/Global Object Binding: global binding refers to when the 'this' keyword is used in the global context, and the value of 'this' will then be equal to the window or console object. However, if in strict mode, 'this' will return undefined.
+  2. Implicit Binding: when the keyword 'this' is used in the context of an object, which means the value of 'this' will be the object itself. Whenever a function is invoked, whatever is to the left of it is what 'this refers to.
+  3. New Binding: has to do with using the 'this' keyword in constructor functions. 'this' will then refer to the new object that is being created within the constructor. Whenever the constructor is called, 'this' will refer to the specific instance of the object that is created and returned by the constructor.
+  4. Explicit Binding: similar to new binding, but involves the use of .call and .apply, which will override what the 'this' keyword points to. Explicit binding can be used to bind two objects together. Whenever .call or .apply is used, 'this' is explicitly defined.
 */
 
 
